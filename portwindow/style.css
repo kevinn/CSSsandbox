@@ -1,0 +1,33 @@
+/****************************
+CSS by Kevin Navia
+http://www.pixelpush.org
+****************************/
+body { color: #aaa; background: #333; }
+#container { max-width: 900px; min-width: 600px; line-height: 1.5em; font: normal 12px Arial, Helvetica, sans-serif; }
+h2 { color: lime; }
+
+
+div.portwin {
+position: relative;
+min-height: 320px; max-height: 600px;
+overflow: hidden;
+background: #111;
+border: 1px solid #3e3e3e;
+}
+
+div.portwin .inner {
+position: absolute;
+top: 0; left: 0;
+padding: 15px;
+width: 18%;
+height: 100%;
+color: #fff;
+background: #222;
+}
+
+div.portwin img { display: block; width: 100%; }
+
+div.portwin .inner b {
+font-size: 22px;
+color: #fff;
+}

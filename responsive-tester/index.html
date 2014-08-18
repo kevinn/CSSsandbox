@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<!-- START Head -->
+<head>
+<!-- START META SECTION -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Mobile Preview</title>
+<meta name="author" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style type="text/css" media="screen">
+*, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body { margin: 0; padding: 0; font-family: sans-serif; background-color: #eee; }
+#preview header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  margin: 0; padding: 0 15px;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 99;
+}
+
+#preview header h1 {
+  float: left;
+  margin: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#preview .close-preview {
+  float: right;
+  margin-top: 8px;
+  margin-right: -10px;
+}
+
+.preview-container {
+  position: absolute;
+  top: 60px; right: 0; left: 0; bottom: 0;
+  margin: 0 auto 10px;
+  width: 1024px; height: 768px;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  border: 15px solid #222;
+  border-radius: 10px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#preview iframe {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+
+#preview header ul {
+  float: left;
+  margin: 0; padding: 0 15px;
+  list-style: none;
+}
+
+#preview header li {
+  position: relative;
+  float: left;
+  margin: 0; padding: 0;
+  width: 50px; height: 50px;
+  border-right: 1px solid #eee;
+}
+
+#preview header li:first-child {
+  border-left: 1px solid #eee;
+}
+
+#preview header li a {
+  display: block;
+  width: 50px; height: 50px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+#preview .device {
+  background: url() 50% 50% no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAhCAYAAAA/F0BXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGRjdGMTE3NDA3MjA2ODExOERCQkVGNUQ4OThFOEE4MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBNUQ0MEMzNDAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBNUQ0MEMzMzAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz45RPvBAAAArElEQVR42mI0NjZmZmBgqADiZCBWZCAe3AfiuUDcwQIkSoG4hYF0oAjV95cJSBQxUAaKQIaIogn6QOlNQMyIhDfhMESUBYvgFijtB8T/iXEKEwMVAMwljBSY8Z8qLhk1ZNSQUUNGDRk1BG9B/Z+WLqmB1gQ1lBgyEY3GachrPPI5aDQ28BpkyCw8Ctqh4dWOR80sZikpqYNAxi8gVgFifhLC8xEQd4OaFwABBgAWTRl6t5sqkQAAAABJRU5ErkJggg==);
+  background-size: auto 30px;
+}
+
+#preview .device1 { background-size: auto 25px;}
+#preview .device2 { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAnCAYAAAAPZ2gOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGRTdGMTE3NDA3MjA2ODExOERCQkVGNUQ4OThFOEE4MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDN0Y0QjUyNTAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDN0Y0QjUyNDAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkU3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkU3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5YU7WoAAAAsklEQVR42mI0NjZmAAIQkQbEZkBswEAauADEp4B4FhCfZQESsUA8B4jZGMgDBlCcAMQpTEBiAgHDGNEwDPigqQOZMQHkQiECLviPQ3wLFjEhFiRXUAP8Z2KgMhg1cNTAUQNHDRw1cNTAUQNHDRxOBrIQaLKR5cLXVHTga5CBcwkoskJqvVoRULsA5OVKIJaAtpGxgWNEum4lENfAIiURiN2AeB+JQfAaqgekNwKIfwEEGADS0hhcdfwwawAAAABJRU5ErkJggg==); background-size: auto 27px; }
+#preview .device3 { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAuCAYAAADQiMIxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowNjgwMTE3NDA3MjA2ODExOEMxNEE2MEFDQTM2OTMzMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NDA4MDE3RTFEMDkxMUUyODhEMUI4NTQzNTFBQzdDOCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NDA4MDE3RDFEMDkxMUUyODhEMUI4NTQzNTFBQzdDOCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDY4MDExNzQwNzIwNjgxMThDMTRBNjBBQ0EzNjkzMzIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDY4MDExNzQwNzIwNjgxMThDMTRBNjBBQ0EzNjkzMzIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz54FaXHAAAAuUlEQVR42uyYMQ6CMBiF/wrBEGXQsdfo4ORRvIJxkMkbgDdwU2/iecDBjQVfkYH5J5YY30u+tEvz9bXbb5xziYgUYAfW8v3U4A7yyFp7xuYAUgkT79mAxKB5NaLxFjy0L+DlrUyUeLA3Ab1d4ZlMGMopp5xyyimnnHLKKaeccsopp5zyP5UPB0LtLzU/gaxfVRkzBJyDBizBS3G+9s2vyosfwQLslecvph/8lvIZ/K4CfPUT3ED+FmAAHUsYBAXMYCIAAAAASUVORK5CYII=); background-size: auto 28px; }
+#preview .device4 { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAA3CAYAAACVSbMgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGQjdGMTE3NDA3MjA2ODExOERCQkVGNUQ4OThFOEE4MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBNUQ0MEMzQzAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBNUQ0MEMzQjAwMzExMUUyQUYxRkNBODk0Nzg2QTM3MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkI3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkI3RjExNzQwNzIwNjgxMThEQkJFRjVEODk4RThBODEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz75WCXbAAAA7UlEQVR42uzaMQrCQBAF0ElIk8rKAwheQNbGykqwEE9ikQOkDwiCXkWs09p4hIAHSGWVMv4hqQKpnIWN/A8/CwkMjyXdbuScE2SBXtENOpdwUqNPNEPfCR5L9IXOJLzoxh3RLbqO8bh4gB6M56nvrNidhx15eJi5V2wq00iajHyIAsC1wxexTCjEEkssscQSSyyxxBJLLLHEEkssscQSSyyxxBJLLLHEEksssX+KHTtobkPd2cZ4Zi7dqXpuPLdRbGk89DZYrVIqVi/LfAyHngarRdSXKbZCV+hduts+v6bo//nCYFbdu9RXfQUYACFBHDVv0A/0AAAAAElFTkSuQmCC); }
+#preview .device.desktop { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANlJREFUeNrsmT0KwkAQhXc1iGAtyNp7gj2NleANrOwklQewFqw8hweYawiCZ5D1DWTBNqIwE97Ay08TPh4vE3iJpZTgbUbB4biEbnLOE5xbaAvNDbM+oTN0aHA4QjsHBquhe+il8Vg7S8dGnV7UOxGJVkkR47rmltwehCY0oQlNaEITmtCEJjShCU1oQhN6qNBa1jxCV9h8FCKW565OX50ZfRmnlG64mEIraGYYVlvTE9TGX/8J6CKmnWB9cBQRvoiEJvTQoHtvjz98gHpvF8bDbDzo9JfzFmAAtHAocpLXB3gAAAAASUVORK5CYII=); background-size: auto 32px; }
+
+#preview .device.landscape {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+</style>
+</head>
+<body id="preview">
+    <!-- START Template Header -->
+    <header id="header">
+        <a href="#" class="btn close-preview"><span class="ico-close"></span></a>
+        <h1>Responsive Test Page</h1>
+
+        <ul>
+            <li><a href="#" class="device device1" data-resize="iPhone" data-rewidth="320" data-reheight="480" title="iPhone (320x480)"></a></li>
+            <li><a href="#" class="device device2" data-resize="iPhone" data-rewidth="640" data-reheight="960" title="Tablet (600x800)"></a></li>
+            <li><a href="#" class="device device3" data-resize="Tablet" data-rewidth="768" data-reheight="1024" title="iPad (768x1024)"></a></li>
+            <li><a href="#" class="device device4" data-resize="Tablet HD" data-rewidth="1200" data-reheight="900" title="Tablet HD (1200x900)"></a></li>
+            <li><a href="#" class="device desktop" data-resize="Desktop" data-rewidth="1280" data-reheight="800"></a>
+        </ul>
+
+    </header>
+    <div class="preview-container">
+        <iframe id="preview-content" frameborder="0" src="http://www.pixelpush.org/"></iframe>
+    </div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(function(){
+
+    //prevew iframe
+    $('[data-resize]').on('click',function(){
+        var $this = $(this),
+            $device = $this.data('resize'),
+            $setWidth = $this.data('rewidth'),
+            $setHeight = $this.data('reheight'),
+            $preview = $('.preview-container');
+
+            $('header ul a').removeAttr('style');
+            $this.css('opacity','0.3');
+
+            if ($this.hasClass('landscape')) {
+                $preview.css({
+                    'height': $setWidth,
+                    'width': $setHeight
+                });
+                $this
+                    .attr('title', $device + ' ('+ $setHeight + 'x' + $setWidth +')')
+                    .removeClass('landscape');
+                $preview
+                    .attr('data-resize', $device + ' ('+ $setHeight + 'x' + $setWidth +')')
+                    .addClass('mobile');
+
+            } else {
+                $preview.css({
+                    'width': $setWidth,
+                    'height': $setHeight
+                });
+                if (!$this.hasClass('desktop')) {
+                    $this
+                        .attr('title', $device + ' ('+ $setWidth + 'x' + $setHeight +')')
+                        .addClass('landscape');
+                    $preview
+                        .attr('data-resize', $device + ' ('+ $setWidth + 'x' + $setHeight +')')
+                        .addClass('mobile')
+                        .css('border-width','15px');
+                } else {
+                    $preview
+                        .attr('data-resize', 'Desktop')
+                        .removeClass('mobile')
+                        .css('border-width','0');
+                }
+            }
+
+        return false;
+    });
+
+    $('.close-preview').on('click',function(){
+        window.close();
+        return false;
+    });
+});
+</script>
+</body>
+</html>

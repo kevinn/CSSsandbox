@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<title>Pure CSS triangles - no images</title>
+<link rel="stylesheet" href="screen.css" type="text/css" media="screen, projection" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>A basic navigation list using &lt;ul&gt; and CSS for markers</h1>
+<p>Should work on a modern browser (Firefox 4, Safari 5/Chrome (Webkit), IE9/8).</p>
+
+	<ul id="nav">
+		<li class="active"><a href="#1">nav item</a></li>
+		<li><a href="#2">nav item2</a></li>
+		<li><a href="#3">nav item3</a></li>
+		<li><a href="#4">nav item3</a></li>
+	</ul>
+
+
+<p><b>The HTML:</b></p>		
+<code>
+	<pre>
+	&lt;ul id="nav"&gt;
+		&lt;li class="active"&gt;&lt;a href="#1"&gt;nav item&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#2"&gt;nav item2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#3"&gt;nav item3&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#4"&gt;nav item3&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+	</pre>
+</code>
+
+<p><b>The CSS:</b></p>	
+	
+<code>
+	<pre>	
+#nav {
+	margin: 0; padding: 0;
+	display: block; 
+	overflow: hidden;
+}
+
+#nav li {
+	float: left;
+	margin: 0; padding: 0 10px 10px;
+	position: relative;
+}
+
+#nav li a {
+	display: block;
+}
+
+#nav li.active a:after,
+#nav li a:hover:after {
+	content: "";
+	display: block;
+	margin: 0 auto; width: 0;
+	border: 5px solid red;
+	border-color: transparent transparent red transparent;
+}
+	</pre>
+</code>
+
+</body>
+</html>

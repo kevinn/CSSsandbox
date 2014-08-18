@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CSS button transition to loading animation</title>
+  <link rel="stylesheet" href="">
+  <style type="text/css" media="screen">
+	*, *:before, *:after {
+	  -webkit-box-sizing: content-box;
+	  -moz-box-sizing: content-box; 
+	  -ms-box-sizing: content-box;
+	  box-sizing: content-box;, 
+	}
+
+    body {
+      margin: 0; padding: 0;
+      font-family: helvetica, arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333;
+      background-color: #ccc;
+    }
+
+    div { margin: 0 auto; width: 70%; text-align: center; }
+    h1 { font-size: 30px; line-height: 40px; }
+
+input::-moz-focus-inner { 
+	border: 0; 
+	padding: 0; 
+	margin-top:-2px; 
+	margin-bottom: -2px; 
+}
+
+    .btn {
+      position: relative;
+      display: block;
+      margin: 20px auto; padding: 10px;
+      width: 70%; height: 20px;
+      font-size: 18px; font-weight: bold; color: #fff;
+      text-decoration: none; text-align: center;
+      line-height: 18px;
+      background-color: #c00;
+      border: 5px solid #c00;
+      border-radius: 100em;
+      overflow: hidden;
+      white-space: nowrap;
+      text-shadow: 0px 2px 1px rgba(0,0,0,0.3);
+
+      -webkit-transition: width 0.25s ease-in-out;
+      -moz-transition: width 0.25s ease-in-out;
+      transition: width 0.25s ease-in-out;
+    }
+
+    @-webkit-keyframes rotate {
+      from { -webkit-transform: rotate(0deg); }
+      to { -webkit-transform: rotate(360deg); }
+    }
+
+    @-moz-keyframes rotate {
+      from { -moz-transform: rotate(0deg); }
+      to { -moz-transform: rotate(360deg); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .circle {
+      width: 20px; height: 20px;
+      background-color: transparent;
+      opacity: 0.5;
+      border: 5px solid #c00;
+      border-left: 5px solid transparent;
+
+      -webkit-transition-property: all;
+      -moz-transition-property: all;
+      transition-property: all;
+
+      -webkit-animation: rotate 0.35s 0.35s linear infinite;
+      -moz-animation: rotate 0.35s 0.35s linear infinite;
+      animation: rotate 0.35s 0.35s linear infinite;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>Submit button with loading animation (CSS)</h1>
+
+    <p>Click on the button. View source for details (Tested on current Webkit, Firefox)</p>
+
+    <p>&nbsp;</p>
+
+    <p><a href="#" class="btn">Submit</a></p>
+
+    <p>&nbsp;</p>
+
+	<p><button type="button" class="btn">Submit</button></p>
+
+
+    <p>kevin@pixelpush.org</p>
+  </div>
+
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+  <!--
+    $(function(){
+      $('.btn').click(function(e){
+        e.preventDefault();
+        $this = $(this);
+        if (!$this.hasClass('circle')) {
+          $this.addClass('circle').text('');
+        }
+        setTimeout(function(){
+         $this.removeClass('circle').text('Done!');
+        },3000)
+      });
+    });
+  -->
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>eBay Style Parallax Trick Demo</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Kevin Navia">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <style type="text/css">
+    * { 
+      -webkit-box-sizing: border-box; 
+      -moz-box-sizing: border-box; 
+      box-sizing: border-box; 
+    }
+
+    body { 
+      margin: 0; padding: 0;
+      font: 14px/1.8 Helvetica, Arial, sans-serif; color: #888;
+      background: #fff;
+    }
+
+    section { 
+      display: block; 
+      margin: 0; padding: 0; 
+    }
+
+    .content { 
+      position: relative;
+      padding: 75px 150px; 
+      background-color: #fff; 
+      border: 1px solid #ccc; 
+      box-shadow: 0 0 50px #000, 0 0 25px #000; 
+      z-index: 99; 
+    }
+
+    .bg { 
+      position: relative;
+      width: 100%; height: 300px;
+      background: url() 0 50% no-repeat; background-size: 100% 100%;
+      background-color: #eee; 
+      background-attachment: fixed;
+    }
+
+    .col {
+      float: left;
+      margin: 0 2% 20px 0;
+      width: 48%;
+    }
+
+    #bg-two { height: 768px; }
+    #bg-three { height: 250px; }
+    #bg-four { height: 150px; }
+
+  </style>
+</head>
+<body>
+  <section id="one">
+    <div class="content">
+
+      <h1>An eBay Style Parallax Scrolling Trick</h1>
+
+      <div style="color: #333;">
+        <p>As seen on <a href="http://www.ebay.com/new">http://www.ebay.com/new</a>, also Eric Bidelman posted a <a href="http://www.youtube.com/watch?v=jBnXPpkD3Gw&feature=youtu.be">youtube video</a> of it in action.</p> 
+      
+        <p>It's pretty self-explanatory actually, so just use view-source on this page. In this demo, I try to vary the height of the "viewing slits" by assigning a different height value on its container.</p>
+        
+        <p>Tested only on Webkit. [Update: A quick look with Firefox 16 and seems to be working as intended.]</p>
+
+        <p>Visit my website: <a href="#">http://www.pixelpush.org</a></p>
+      </div>
+      
+      <hr style="clear: both">
+
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation.</p>
+
+      <p class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur.</p>
+
+      <p class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in.</p>
+
+      <div style="clear: both;"></div>
+
+
+    </div>
+  </section>
+  
+  <section class="bg" style="background-image: url(images/one.jpg);"></section>
+
+  <section id="two">
+    <div class="content">
+
+      <h1>Section 2: Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</h1>
+
+      <p class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <p class="col">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <div style="clear: both;"></div>
+
+    </div>
+  </section>
+  
+  <section class="bg" id="bg-two" style="background-image: url(images/two.jpg);"></section>
+
+  <section id="three">
+    <div class="content">
+
+      <h1>Section 3: Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+  </section>
+
+  <section class="bg" style="background-image: url(images/three.jpg);"></section>
+
+  <section id="four">
+    <div class="content">
+
+      <h1>Section 4: Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+  </section>
+
+  <section class="bg" id="bg-four" style="background-image: url(images/four.jpg);"></section>
+
+  <section id="five">
+    <div class="content">
+
+      <h1>Last: Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+
+      <p>Bottom</p>
+
+    </div>
+  </section>
+
+</body>
+</html>

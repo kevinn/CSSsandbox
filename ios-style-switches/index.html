@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<title>Playing around with switches</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<style>
+body { padding: 30px 100px; font-family: sans-serif; color: #333; background: #fff; }
+
+/* new switch style */
+.circle-switch,
+.circle-switch2 {
+	position: relative;
+	display: inline-block;
+	margin: 10px 0 0; padding: 0;
+	width: 75px; height: 28px;
+	background: #fff;
+	border: 1px solid #888; border-radius: 20px;
+	-webkit-box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	-moz-box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	-webkit-background-clip: padding-box;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.circle-switch input[type="checkbox"],
+.circle-switch2 input[type="checkbox"] { display: none; }
+
+.circle-switch:before,
+.circle-switch2 > .toggle {
+	content: "";
+	display: block;
+	position: absolute; top: 0; left: 0;
+	width: 26px; height: 26px;
+	background: #eaeaea;
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	-moz-box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	-webkit-background-clip: padding-box;
+	border: 1px solid #aaa;
+	border-radius: 28px;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: all 0.125s ease-in-out;
+	-moz-transition: all 0.125s ease-in-out;
+	transition: all 0.125s ease-in-out;
+	z-index: 3;
+}
+
+.circle-switch.on,
+.circle-switch2.on { color: #fff; background: #1F89D2; }
+
+.circle-switch.on:before,
+.circle-switch2.on > .toggle {
+	-webkit-transform: translate3d(47px,0,0);
+	-moz-transform: translate3d(47px,0,0);
+	transform: translate3d(47px,0,0);
+}
+
+.circle-switch:after,
+.circle-switch2:after {
+	content: "OFF";
+	position: absolute; left: auto; right: 10px; top: 5px; z-index: 1;
+	display: block;
+	font-weight: bold; color: #888; text-align: center; text-shadow: 0 0 0; text-transform: uppercase; 
+}
+.circle-switch.on:after,
+.circle-switch2.on:after {
+	content: "ON";
+	left: 10px; right: auto;
+	color: #fff;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Playing around with IOS style switches</h1>
+
+		<p>Better semantic and current ios style switch using :before and :after:<br />
+			
+			<div class="circle-switch">
+				<input type="checkbox" name="chkbox-name" value="" id="chkbox-name">
+			</div>
+			
+		</p>
+		
+		<p>Since WebKit doesn't support CSS3 Transitions on pseudo elements:<br />
+			
+			<div class="circle-switch2">
+				<span class="toggle"></span>
+				<input type="checkbox" name="chkbox-name" value="" id="chkbox-name">
+			</div>
+			
+		</p>
+
+		<h2>HTML</h2>
+		<pre>
+&lt;p&gt;	
+	&lt;div class="circle-switch"&gt;
+		&lt;input type="checkbox" name="chkbox-name" value="" id="chkbox-name"&gt;
+	&lt;/div&gt;		
+&lt;/p&gt;
+		
+&lt;p&gt;
+	&lt;div class="circle-switch2"&gt;
+		&lt;span class="toggle"&lt;&lt;/span&gt;
+		&lt;input type="checkbox" name="chkbox-name" value="" id="chkbox-name"&gt;
+	&lt;/div&gt;		
+&lt;/p&gt;
+		</pre>
+
+
+		<h2>CSS</h2>
+		<pre>
+.circle-switch,
+.circle-switch2 {
+	position: relative;
+	display: inline-block;
+	margin: 10px 0 0; padding: 0;
+	width: 75px; height: 28px;
+	background: #fff;
+	border: 1px solid #888; border-radius: 20px;
+	-webkit-box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	-moz-box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	box-shadow: inset 0 12px 3px rgba(255,255,255,0.1), inset 0 1px 2px rgba(0,0,0,0.7);
+	-webkit-background-clip: padding-box;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.circle-switch input[type="checkbox"],
+.circle-switch2 input[type="checkbox"] { display: none; }
+
+.circle-switch:before,
+.circle-switch2 > .toggle {
+	content: "";
+	display: block;
+	position: absolute; top: 0; left: 0;
+	width: 26px; height: 26px;
+	background: #eaeaea;
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	-moz-box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	box-shadow: 0 0 2px rgba(0,0,0,0.7),inset 0 0 2px #fff, inset 0 0 2px #fff, inset 0 0 5px #fff;
+	-webkit-background-clip: padding-box;
+	border: 1px solid #aaa;
+	border-radius: 28px;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: all 0.125s ease-in-out;
+	-moz-transition: all 0.125s ease-in-out;
+	transition: all 0.125s ease-in-out;
+	z-index: 3;
+}
+
+.circle-switch.on,
+.circle-switch2.on { color: #fff; background: #1F89D2; }
+
+.circle-switch.on:before,
+.circle-switch2.on > .toggle {
+	-webkit-transform: translate3d(47px,0,0);
+	-moz-transform: translate3d(47px,0,0);
+	transform: translate3d(47px,0,0);
+}
+
+.circle-switch:after,
+.circle-switch2:after {
+	content: "OFF";
+	position: absolute; left: auto; right: 10px; top: 5px; z-index: 1;
+	display: block;
+	font-weight: bold; color: #888; text-align: center; text-shadow: 0 0 0; text-transform: uppercase; 
+}
+.circle-switch.on:after,
+.circle-switch2.on:after {
+	content: "ON";
+	left: 10px; right: auto;
+	color: #fff;
+}
+		</pre>
+	
+</div>
+<script>
+
+$('.circle-switch, .circle-switch2').click(function(e){
+	var tswitch = $(this);
+	if (tswitch.hasClass('on')) {
+		tswitch.removeClass('on');
+	} else {
+		tswitch.addClass('on');
+	}
+});
+</script>
+
+</body>
+</html>

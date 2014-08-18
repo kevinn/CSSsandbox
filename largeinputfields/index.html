@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<title>Form Example</title>
+<link rel="stylesheet" href="screen.css" type="text/css" media="screen, projection" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+<!--
+$(function() {
+	$(".magnify").focus(function(){
+		$(this).css("font-size","18px");
+		$(this).css("font-weight","bold");
+	});
+	
+	$(".magnify").blur(function(){
+		$(this).css("font-size","inherit");
+		$(this).css("font-weight","normal");
+	});	
+});
+-->
+</script>
+</head>
+
+<body>
+<h1>Better Input Form Fields</h1>
+<p>A sample credit card/booking form that shows a small enhancement (via javascript) would help increase readability/usability in filling up web forms.</p>
+
+<form>
+	<fieldset>
+		<legend>Group 1</legend>
+		<p><label for="ab">Field 1</label> <span><input type="text" name="ab" id="ab" class="magnify" tabindex="1" /></p>
+		<p><label for="ab1">Field 2</label> <span><input type="text" name="ab1" id="ab1" class="magnify" tabindex="2" /></p>
+		<p><label for="ab2">Field 3</label> <span><input type="text" name="ab2" id="ab2" class="magnify" tabindex="3" /></p>
+	</fieldset>
+
+	<fieldset>
+		<legend>Credit Card Information</legend>
+		<p><label for="ct">Card Type</label> <span><select id="ct" name="ct" tabindex="4"><option>Visa</option><option>MasterCard</option><option>American Express</option></select></span>
+		<p><label for="one">Card Number</label> <span><input type="text" name="one" id="one" class="magnify" tabindex="5" /></p>
+		<p><label for="mo">Valid Until</label> <span><select id="mo" name="mo" tabindex="6"><option>01</option><option>02</option><option>03</option></select> <select id="yr" name="yr" tabindex="7"><option>2010</option><option>2011</option><option>2012</option></select></span></p>
+		<p><label for="thr">Cardholder Name</label> <span><input type="text" name="thr" id="thr" class="magnify" tabindex="8" /></p>
+		<p><label for="fou">Security Code</label> <span><input type="text" name="fou" id="fou" class="magnify" tabindex="9" /></p>
+	</fieldset>
+
+	<p><input type="submit" value="Continue Checkout" id="submx" name="submx" /></p>
+</form>
+	
+</body>
+</html>
