@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800|Montserrat:400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <title></title>
+  <style type="text/css" media="screen">
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body { font-family: "Open Sans"; font-size: 14px; color: #333; line-height: 20px; }
+    h2 { margin: 0; padding: 0; font-weight: normal; font-family: "Montserrat"; text-transform: uppercase; }
+
+    .cf:before,
+    .cf:after {
+      content: " ";
+      display: table;
+    }
+
+    .cf:after { clear: both; }
+
+
+    .row {
+      display: block;
+    }
+    .row.threes > .col {
+      float: left;
+      padding: 15px;
+      width: 33.333%;
+      border: 1px solid red;
+    }
+
+    input[type="text"] {
+      display: block;
+      width: 100%; height: 30px;
+      font-family: "Open Sans";
+      font-weight: 200;
+      font-size: 16px;
+      line-height: 30px;
+      border: 2px solid #ccc;
+    }
+
+    *:focus {
+      outline:none;
+    }
+    .cal { position: relative; white-space: nowrap; }
+    .cal > .fa { position: absolute; top: 50%; left: 10px; margin-top: -10px; font-size: 15px; line-height: 20px; color: green; }
+    .cal > .calendar { padding-left: 35px; }
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      margin: auto; padding: 50px;
+      font-family: "Open Sans";
+      font-weight: 300;
+      color: #fff;
+      background-color: #c00;
+      z-index: 10000;
+    }
+
+    .modal h1 { font-size: 30px; font-weight: 200; }
+
+    .modal.open { display: block; }
+
+    .date-list {
+      display: block;
+      margin: 0; padding: 0;
+      list-style: none;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .date-list li a {
+      display: block;
+      padding: 0.5em;
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+
+    .positionthis {
+      display: none;
+      background-color: red;
+      padding: 0.5em;
+      width: auto; height: auto;
+      font-size: 14px !important;
+    }
+
+    .positionthis > .close {
+      display: none;
+      position: absolute;
+      top: 10px; right: 10px;
+      text-align: center;
+      font-size: 25px;
+      line-height: 44px;
+      color: #fff;
+      text-decoration: none;
+      width: 44px; height: 44px;
+      border: 1px solid #fff;
+    }
+
+    .positionthis h1 { margin: 0; padding: 0.5em; font-size: 16px; font-weight: 300; }
+
+    .date-list a:hover { background-color: rgba(255,255,255,0.3); }
+
+    @media screen and (max-width: 768px) {
+      .row.threes > .col {
+        float: none;
+        width: 100%;
+      }
+
+
+      .positionthis {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0;
+        bottom: 0;
+        margin: auto; padding: 2em;
+        width: auto !important;
+        height: auto !important;
+      }
+
+      .positionthis .close { display: block; }
+
+      .date-list {
+        max-height: 95%;
+      }
+      .date-list a {
+        font-family: "Open Sans";
+        font-weight: 300;
+        font-size: 30px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+
+  <div class="row threes cf">
+    <div class="col">
+      <label>Check-in date:</label>
+      <div class="cal">
+        <i class="fa fa-calendar-o"></i>
+        <input type="text" class="calendar" id="cal1" placeholder="Check-in Date">
+      </div>
+    </div>
+    <div class="col">
+      <label>Check-out date:</label>
+      <div class="cal">
+        <i class="fa fa-calendar-o"></i>
+        <input type="text" class="calendar" id="cal2" placeholder="Check-out Date">
+      </div>
+    </div>
+    <div class="col">
+      <label>Adults:</label>
+      <div>
+        <select name="">
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="positionthis">
+    <a href="#" class="close fa fa-close"></a>
+    <h1></h1>
+    <ul class="date-list">
+      <li><a href="#">01 August 2015</a></li>
+      <li><a href="#">02 August 2015</a></li>
+      <li><a href="#">03 August 2015</a></li>
+      <li><a href="#">04 August 2015</a></li>
+      <li><a href="#">05 August 2015</a></li>
+      <li><a href="#">06 August 2015</a></li>
+      <li><a href="#">07 August 2015</a></li>
+      <li><a href="#">08 August 2015</a></li>
+      <li><a href="#">09 August 2015</a></li>
+      <li><a href="#">10 August 2015</a></li>
+      <li><a href="#">11 August 2015</a></li>
+      <li><a href="#">12 August 2015</a></li>
+      <li><a href="#">13 August 2015</a></li>
+      <li><a href="#">14 August 2015</a></li>
+      <li><a href="#">15 August 2015</a></li>
+      <li><a href="#">16 August 2015</a></li>
+      <li><a href="#">17 August 2015</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+$(function(){
+
+  var $ddMenu = $('.positionthis');
+  var $thisCalendar;
+
+  function modalOpen() {
+    if ($('.modal').hasClass('open')) {
+      $('.modal').removeClass('open');
+    } else {
+      $('.modal').addClass('open');
+    }
+  }
+
+  $('.calendar').on('click', function(e){
+    e.preventDefault();
+    $thisCalendar = $('#' + $(this).attr('id'));
+    console.log($thisCalendar.offset());
+    console.log($thisCalendar.width());
+
+    $thisCalendar.val('');
+
+    $ddMenu.css({
+      'display':'block',
+      'position': 'absolute',
+      'top': $thisCalendar.offset().top + $thisCalendar.outerHeight(),
+      'left': $thisCalendar.offset().left,
+      'width': $thisCalendar.outerWidth(),
+    }).find('.close').one('click',function(e){
+      $ddMenu.css({
+        'display':'none'
+      });
+    })
+    .end().find('h1').text('Select ' + $thisCalendar.attr('placeholder'))
+    .end().find('.date-list').scrollTop(0);
+
+  });
+
+  $('.date-list').on('click','a', function(e){
+    e.preventDefault();
+    $(this).css({
+      'border': '2px solid #fff'
+    });
+    $thisCalendar.val($(this).text());
+
+    setTimeout(function(){
+      $ddMenu.animate({
+        'opacity': 0
+      }, 350, function(){
+        $ddMenu.hide();
+        $('.date-list a, .positionthis').removeAttr('style');
+      });
+    }, 350);
+
+  });
+
+  $(window).resize(function(event) {
+    $ddMenu.css({
+      'top': $thisCalendar.offset().top + $thisCalendar.outerHeight(),
+      'left': $thisCalendar.offset().left,
+      'width': $thisCalendar.outerWidth()
+    })
+  });
+
+});
+</script>
+
+</body>
+</html>
